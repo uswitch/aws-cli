@@ -1,0 +1,21 @@
+pipeline:
+  docker:
+    when:
+      event: push
+    image: plugins/docker
+    repo: quay.io/uswitch/aws-cli
+    registry: quay.io
+    secrets: [ docker_username, docker_password ]
+    tag:
+      - ${DRONE_COMMIT_SHA}
+      - ${DRONE_COMMIT_BRANCH}
+
+  publish:
+    when:
+      event: tag
+      branch: master
+    image: plugins/docker
+    repo: quay.io/uswitch/aws-cli
+    registry: quay.io
+    secrets: [ docker_username, docker_password ]
+    auto_tag: true

@@ -1,5 +1,5 @@
 FROM alpine:3.8
-ENV awscli_ver="1.14.5" s3cmd_ver="2.0.1"
+ENV awscli_ver="1.15.72" s3cmd_ver="2.0.2"
 
 RUN apk -v --update add \
         python \
